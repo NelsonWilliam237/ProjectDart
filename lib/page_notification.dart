@@ -13,7 +13,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFEAF7EB),
 
-      // -------------------------- APPBAR --------------------------
+      // -------------------------- APPBAR -------------------------
       appBar: AppBar(
         backgroundColor: const Color(0xFF1E3A8A),
         elevation: 0,
