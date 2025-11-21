@@ -1,3 +1,4 @@
+import 'page_notification.dart';
 import 'package:flutter/material.dart';
 import 'categories_page.dart';
 import 'transactions_page.dart';
@@ -24,7 +25,7 @@ class MainApp extends StatelessWidget {
 }
 
 class _MainNavigation extends StatefulWidget {
-  const _MainNavigation({super.key});
+  const _MainNavigation();
 
   @override
   State<_MainNavigation> createState() => _MainNavigationState();
@@ -36,12 +37,12 @@ class _MainNavigationState extends State<_MainNavigation> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      const Placeholder(),          // Accueil
-      const Placeholder(),          // Notification
-      const Placeholder(),          // Analyse
-      const CategoriesPage(),       // MA page
-      const TransactionsPage(),     // mA page
-      const Placeholder(),          // Profil
+      const Placeholder(), // Accueil
+      const NotificationsPage(), // Notification
+      const Placeholder(), // Analyse
+      const CategoriesPage(), // MA page
+      const TransactionsPage(), // mA page
+      const Placeholder(), // Profil
     ];
 
     return Scaffold(
@@ -53,15 +54,24 @@ class _MainNavigationState extends State<_MainNavigation> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_none), label: 'Notif'),
-          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Analyse'),
-          BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Catégories'),
+            icon: Icon(Icons.notifications_none),
+            label: 'Notif',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.receipt_long), label: 'Transac'),
+            icon: Icon(Icons.bar_chart),
+            label: 'Analyse',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Catégories',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long),
+            label: 'Transac',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
         ],
       ),
     );
   }
 }
-

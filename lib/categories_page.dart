@@ -5,8 +5,8 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const blue = Color(0xFF1B2B7A);      // adapte avec la vraie couleur Figma
-    const lightBg = Color(0xFFEAF8F4);   // fond vert très clair
+    const blue = Color(0xFF1B2B7A); // adapte avec la vraie couleur Figma
+    const lightBg = Color(0xFFEAF8F4); // fond vert très clair
 
     return Scaffold(
       backgroundColor: blue,
@@ -41,9 +41,7 @@ class CategoriesPage extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 color: lightBg,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(40),
-                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
               ),
               child: Column(
                 children: [
@@ -54,10 +52,10 @@ class CategoriesPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: GridView.count(
-                        crossAxisCount: 4,                  // 4 colonnes
+                        crossAxisCount: 4, // 4 colonnes
                         mainAxisSpacing: 28,
                         crossAxisSpacing: 24,
-                        childAspectRatio: 0.8,              // forme proche du Figma
+                        childAspectRatio: 0.8, // forme proche du Figma
                         children: const [
                           _CategoryItem(
                             icon: Icons.restaurant,
@@ -75,53 +73,15 @@ class CategoriesPage extends StatelessWidget {
                             icon: Icons.local_grocery_store,
                             label: 'Alimentation',
                           ),
-                          _CategoryItem(
-                            icon: Icons.home,
-                            label: 'Loyer',
-                          ),
+                          _CategoryItem(icon: Icons.home, label: 'Loyer'),
                           _CategoryItem(
                             icon: Icons.card_giftcard,
                             label: 'Cadeaux',
                           ),
-                          _CategoryItem(
-                            icon: Icons.savings,
-                            label: 'Épargne',
-                          ),
+                          _CategoryItem(icon: Icons.savings, label: 'Épargne'),
                           _CategoryItem(
                             icon: Icons.sports_esports,
                             label: 'Divertissement',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // ===== BOTTOM NAV STYLE FIGMA =====
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFDFF1E7),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          _BottomItem(icon: Icons.home, selected: false),
-                          _BottomItem(
-                            icon: Icons.notifications_none,
-                            selected: false,
-                          ),
-                          _BottomItem(icon: Icons.bar_chart, selected: false),
-                          _BottomItem(icon: Icons.category, selected: true),
-                          _BottomItem(
-                            icon: Icons.receipt_long,
-                            selected: false,
-                          ),
-                          _BottomItem(
-                            icon: Icons.person_outline,
-                            selected: false,
                           ),
                         ],
                       ),
@@ -155,11 +115,7 @@ class _CategoryItem extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Icon(
-            icon,
-            size: 28,
-            color: Colors.blueAccent,
-          ),
+          child: Icon(icon, size: 28, color: Colors.blueAccent),
         ),
         const SizedBox(height: 8),
         Text(
@@ -168,22 +124,6 @@ class _CategoryItem extends StatelessWidget {
           style: const TextStyle(fontSize: 12),
         ),
       ],
-    );
-  }
-}
-
-class _BottomItem extends StatelessWidget {
-  final IconData icon;
-  final bool selected;
-
-  const _BottomItem({required this.icon, required this.selected});
-
-  @override
-  Widget build(BuildContext context) {
-    return Icon(
-      icon,
-      size: 22,
-      color: selected ? Colors.blueAccent : Colors.grey,
     );
   }
 }

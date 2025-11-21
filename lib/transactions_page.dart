@@ -85,7 +85,9 @@ class TransactionsPage extends StatelessWidget {
                   Expanded(
                     child: ListView(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 8),
+                        horizontal: 24,
+                        vertical: 8,
+                      ),
                       children: [
                         const _MonthTitle('Avril'),
                         ...avril.map((t) => _TransactionTile(t)),
@@ -94,29 +96,6 @@ class TransactionsPage extends StatelessWidget {
                         ...mars.map((t) => _TransactionTile(t)),
                         const SizedBox(height: 16),
                       ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFDFF1E7),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          _BottomItem(icon: Icons.home, selected: false),
-                          _BottomItem(
-                              icon: Icons.notifications_none, selected: false),
-                          _BottomItem(icon: Icons.bar_chart, selected: false),
-                          _BottomItem(icon: Icons.category, selected: false),
-                          _BottomItem(icon: Icons.receipt_long, selected: true),
-                          _BottomItem(
-                              icon: Icons.person_outline, selected: false),
-                        ],
-                      ),
                     ),
                   ),
                 ],
@@ -216,7 +195,9 @@ class _TransactionTile extends StatelessWidget {
                 Text(
                   data.title,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w600, fontSize: 14),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
@@ -236,22 +217,6 @@ class _TransactionTile extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _BottomItem extends StatelessWidget {
-  final IconData icon;
-  final bool selected;
-
-  const _BottomItem({required this.icon, required this.selected});
-
-  @override
-  Widget build(BuildContext context) {
-    return Icon(
-      icon,
-      size: 22,
-      color: selected ? Colors.blueAccent : Colors.grey,
     );
   }
 }
