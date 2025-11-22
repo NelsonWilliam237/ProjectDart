@@ -1,3 +1,4 @@
+import 'package:finexia/page_accueil.dart';
 import 'page_notification.dart';
 import 'package:flutter/material.dart';
 import 'categories_page.dart';
@@ -37,7 +38,7 @@ class _MainNavigationState extends State<_MainNavigation> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      const Placeholder(), // Accueil
+      const HomePage(), // Accueil
       const NotificationsPage(), // Notification
       const Placeholder(), // Analyse
       const CategoriesPage(), // MA page
