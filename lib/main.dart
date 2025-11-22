@@ -1,4 +1,5 @@
-import 'package:finexia/page_accueil.dart';
+import 'page_analyse.dart';
+import 'page_accueil.dart';
 import 'page_notification.dart';
 import 'package:flutter/material.dart';
 import 'categories_page.dart';
@@ -40,7 +41,7 @@ class _MainNavigationState extends State<_MainNavigation> {
     final pages = [
       const HomePage(), // Accueil
       const NotificationsPage(), // Notification
-      const Placeholder(), // Analyse
+      const AnalysePage(), // Analyse
       const CategoriesPage(), // MA page
       const TransactionsPage(), // mA page
       const Placeholder(), // Profil
