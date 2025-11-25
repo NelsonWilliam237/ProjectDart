@@ -5,7 +5,7 @@ import 'page_analyse.dart';
 import 'page_notification.dart';
 import 'categories_page.dart';
 import 'transactions_page.dart';
-import 'profile_page.dart'; // ✅ nouvelle page
+import 'profile_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
       ),
-      home: const LoginPage(), // 👉 l’app démarre sur le login
+      home: const LoginPage(),
     );
   }
 }
@@ -46,12 +46,12 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      const HomePage(),          // 0 - Accueil
+      const HomePage(), // 0 - Accueil
       const NotificationsPage(), // 1 - Notifications
-      const AnalysePage(),       // 2 - Analyse
-      const CategoriesPage(),    // 3 - Catégories
-      const TransactionsPage(),  // 4 - Transactions
-      const ProfilePage(),       // 5 - Profil ✅
+      const AnalysePage(), // 2 - Analyse
+      const CategoriesPage(), // 3 - Catégories
+      const TransactionsPage(), // 4 - Transactions
+      const ProfilePage(), // 5 - Profil ✅
     ];
 
     return Scaffold(
