@@ -3,6 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+String greeting() {
+  final hour = DateTime.now().hour;
+  if (hour < 12) {
+    return "Bonjour";
+  } else if (hour < 18) {
+    return "Bonne après-midi";
+  } else {
+    return "Bonsoir";
+  }
+}
+
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -59,13 +71,14 @@ class HomePage extends StatelessWidget {
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              'Bienvenue Fatou',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
+                              '${greeting()}, Fatou 👋',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
-                            ),
+
                             const SizedBox(height: 14),
 
                             // Total du compte card (mint rounded rectangle)
