@@ -51,7 +51,7 @@ class _MainNavigationState extends State<MainNavigation> {
       const AnalysePage(), // 2 - Analyse
       const CategoriesPage(), // 3 - Catégories
       const TransactionsPage(), // 4 - Transactions
-      const ProfilePage(), // 5 - Profil ✅
+      const ProfilePage(), // 5 - Profil 
     ];
 
     return Scaffold(
