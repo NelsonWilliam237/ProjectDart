@@ -92,7 +92,7 @@ class TransactionsPage extends StatelessWidget {
                         const _MonthTitle('Avril'),
                         ...avril.map((t) => _TransactionTile(t)),
                         const SizedBox(height: 16),
-                        const _MonthTitle('Marc'),
+                        const _MonthTitle('Mars'),
                         ...mars.map((t) => _TransactionTile(t)),
                         const SizedBox(height: 16),
                       ],
