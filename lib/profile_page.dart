@@ -27,9 +27,14 @@ class ProfilePage extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Icon(Icons.arrow_back, color: Colors.white),
-                  Text(
+                children: [
+                  // ← BOUTON RETOUR FONCTIONNEL
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(Icons.arrow_back, color: Colors.white),
+                  ),
+
+                  const Text(
                     "Profil",
                     style: TextStyle(
                       color: Colors.white,
@@ -37,7 +42,8 @@ class ProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Icon(Icons.settings_outlined, color: Colors.white),
+
+                  const Icon(Icons.settings_outlined, color: Colors.white),
                 ],
               ),
             ),
@@ -56,16 +62,27 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
 
-              // ⭐ NOUVEAU → ScrollView pour éviter Overflow !
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // Avatar
-                    const CircleAvatar(
-                      radius: 40,
-                      backgroundColor: kSoftMint,
-                      child: Icon(Icons.person, size: 40, color: kPrimaryBlue),
+                    TweenAnimationBuilder<double>(
+                      duration: const Duration(milliseconds: 500),
+                      tween: Tween(begin: 0, end: 1),
+                      builder: (context, val, child) => Opacity(
+                        opacity: val,
+                        child: Transform.translate(
+                          offset: Offset(0, 20 * (1 - val)),
+                          child: child,
+                        ),
+                      ),
+                      child: const CircleAvatar(
+                        radius: 40,
+                        backgroundColor: kSoftMint,
+                        child: Icon(Icons.person, size: 40, color: kPrimaryBlue),
+                      ),
                     ),
                     const SizedBox(height: 12),
 
@@ -173,32 +190,43 @@ class _ProfileOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: 4),
-      leading: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          color: kSoftMint,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: Icon(icon, color: kPrimaryBlue),
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 14,
+    return TweenAnimationBuilder<double>(
+      duration: const Duration(milliseconds: 400),
+      tween: Tween(begin: 0, end: 1),
+      builder: (context, val, child) => Opacity(
+        opacity: val,
+        child: Transform.translate(
+          offset: Offset(0, 15 * (1 - val)),
+          child: child,
         ),
       ),
-      subtitle: Text(
-        subtitle,
-        style: TextStyle(
-          fontSize: 12,
-          color: Colors.grey.shade600,
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(vertical: 4),
+        leading: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: kSoftMint,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Icon(icon, color: kPrimaryBlue),
         ),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+          ),
+        ),
+        subtitle: Text(
+          subtitle,
+          style: TextStyle(
+            fontSize: 12,
+            color: Colors.grey.shade600,
+          ),
+        ),
+        onTap: () {},
       ),
-      onTap: () {},
     );
   }
 }
