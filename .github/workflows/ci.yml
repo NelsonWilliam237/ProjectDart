@@ -1,0 +1,18 @@
+name: finexia-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install backend dependencies
+        run: pip install -r backend/requirements.txt
+      - name: Backend smoke import
+        run: python -c "from backend.services.auth_service.app.main import app; print(app.title)"
