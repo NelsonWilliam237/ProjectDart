@@ -1,0 +1,82 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./infra/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - '80:80'
+    depends_on:
+      - auth-service
+      - user-service
+      - wallet-service
+      - transaction-service
+      - analytics-service
+      - notification-service
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: finexia
+      POSTGRES_PASSWORD: finexia
+      POSTGRES_DB: finexia
+    ports:
+      - '5432:5432'
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: backend/services/auth_service/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg2://finexia:finexia@postgres:5432/finexia
+    depends_on:
+      - postgres
+
+  user-service:
+    build:
+      context: .
+      dockerfile: backend/services/user_service/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg2://finexia:finexia@postgres:5432/finexia
+    depends_on:
+      - postgres
+
+  wallet-service:
+    build:
+      context: .
+      dockerfile: backend/services/wallet_service/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg2://finexia:finexia@postgres:5432/finexia
+    depends_on:
+      - postgres
+
+  transaction-service:
+    build:
+      context: .
+      dockerfile: backend/services/transaction_service/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg2://finexia:finexia@postgres:5432/finexia
+    depends_on:
+      - postgres
+
+  analytics-service:
+    build:
+      context: .
+      dockerfile: backend/services/analytics_service/Dockerfile
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: backend/services/notification_service/Dockerfile
